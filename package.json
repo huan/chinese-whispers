@@ -1,0 +1,28 @@
+{
+  "name": "chinese-whispers",
+  "version": "0.0.1",
+  "description": "Chinese Whispers Algorithm",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap src/ test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zixia/chinese-whispers.git"
+  },
+  "keywords": [
+    "chinese",
+    "whispers",
+    "algorithm",
+    "cluster"
+  ],
+  "author": "Huan LI <zixia@zixia.net>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/zixia/chinese-whispers/issues"
+  },
+  "homepage": "https://github.com/zixia/chinese-whispers#readme",
+  "dependencies": {
+    "knuth-shuffle": "^1.0.1"
+  }
+}
