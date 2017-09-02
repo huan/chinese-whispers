@@ -73,7 +73,7 @@ export class ChineseWhispers<T> {
       const nodeList = G.nodes()
       // I randomize the nodes to give me an arbitrary start point
       knuthShuffle(nodeList)  // orignal array modified
-      for (let node of nodeList) {
+      for (const node of nodeList) {
         const neighborList = G.neighbors(node)
         const classes: any = {}
         // do an inventory of the given nodes neighbours and edge weights
@@ -105,14 +105,13 @@ export class ChineseWhispers<T> {
       }
     }
 
-    const nodeList = G.nodes()
-    for (const node of nodeList) {
+    for (const node of G.nodes()) {
       console.log(node, G.node.get(node)['class'])
     }
-    return [[1,2]]
+    return [[1, 2]]
   }
 
-  private buildNetwork<T>(data: T[], distance: DistanceFunc<T>) {
+  private buildNetwork(data: T[], distance: DistanceFunc<T>) {
     const nodeList: CWNode[] = [...data.keys()] // [0, 1, 2, ..., data.length - 1]
     const edgeList: CWEdge[] = []
 

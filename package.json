@@ -7,7 +7,8 @@
     "clean": "shx rm -fr dist/*",
     "demo": "npm run example:demo",
     "example:demo": "ts-node examples/demo",
-    "lint": "tslint --version && tslint --project tsconfig.json --type-check \"{bin,examples,src,tests}/**/*.ts\" --exclude=\"test/fixture/**\" --exclude=\"dist/\" && npm run clean && tsc --noEmit",
+    "lint": "npm run lint:ts",
+    "lint:ts": "tslint --version && tslint --project tsconfig.json --type-check --exclude \"dist/\" \"{bin,examples,src,tests}/**/*.ts\" && npm run clean && tsc --noEmit",
     "test": "tap \"src/**/*.spec.ts\" \"test/**/*.spec.ts\""
   },
   "repository": {
@@ -38,6 +39,7 @@
     "tap": "^10.7.2",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
+    "tslint-jsdoc-rules": "^0.1.2",
     "typescript": "^2.4.2"
   }
 }
