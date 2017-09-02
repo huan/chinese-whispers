@@ -1,6 +1,49 @@
 # chinese-whispers
 An Efficient Graph Clustering Algorithm for Node.js
 
+# Insall
+
+```shell
+npm install chinese-whispers
+```
+
+# Example
+
+```ts
+import ChineseWhispers from 'chinese-whispers'
+
+function distanceFunc(a, b) {
+  return Math.abs(a - b)
+}
+
+const cw = new ChineseWhispers({
+  distance:  distanceFunc,
+  threshold: 5,
+  epochs: 10,
+})
+
+const array = [
+  0,
+  1,
+  2,
+
+  10,
+  11,
+  12,
+
+  20,
+  21,
+  22,
+]
+
+const indicesList = cw.fit(array)
+
+console.log(indics.length)  // 3
+console.log(indics[0])      //  [0, 1, 2]
+console.log(indics[1])      //  [10, 11, 12]
+console.log(indics[2])      //  [20, 21, 22]
+```
+
 ### Links
 
 * [facenet chinese whispers(face cluster)](http://blog.csdn.net/liyuan123zhouhui/article/details/70312716)

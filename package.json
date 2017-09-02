@@ -4,7 +4,9 @@
   "description": "Chinese Whispers Algorithm",
   "main": "index.js",
   "scripts": {
-    "test": "tap src/ test/"
+    "demo": "npm run example:demo",
+    "example:demo": "ts-node examples/demo",
+    "test": "tap \"src/**/*.spec.ts\" \"test/**/*.spec.ts\""
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,15 @@
   },
   "homepage": "https://github.com/zixia/chinese-whispers#readme",
   "dependencies": {
-    "knuth-shuffle": "^1.0.1"
+    "jsnetworkx": "^0.3.4",
+    "knuth-shuffle": "^1.0.1",
+    "numjs": "^0.14.2"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.25",
+    "@types/numjs": "^0.14.2",
+    "tap": "^10.7.2",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2"
   }
 }
