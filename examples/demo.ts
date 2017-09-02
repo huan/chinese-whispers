@@ -26,7 +26,7 @@ const array = [
   22,
 ]
 
-const clusterIndicesList = cw.fit(array)
+const clusterIndicesList = cw.cluster(array)
 console.log(typeof clusterIndicesList)
 // for (const i in clusterIndicesList) {
 //   console.log('Cluster[' + i + ']: ' + clusterIndicesList[i])

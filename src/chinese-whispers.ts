@@ -30,7 +30,7 @@ type CWEdge = [
   number,
   number,
   {
-    weight: number,
+    distance: number,
   }
 ]
 
@@ -53,7 +53,7 @@ export class ChineseWhispers<T> {
     this.epochs    = options.epochs     || 10
   }
 
-  public fit(data: T[], options?: ChineseWhispersOptions<T>): Cluster[] {
+  public cluster(data: T[], options?: ChineseWhispersOptions<T>): Cluster[] {
     let distance  = this.distance
     let epochs    = this.epochs
     let threshold = this.threshold
@@ -64,7 +64,7 @@ export class ChineseWhispers<T> {
       epochs    = options.epochs || epochs
     }
 
-    const G = this.buildNetwork(data, distance)
+    const G = this.buildNetwork(data, distance, threshold)
 
     // run Chinese Whispers
     // I default to 10 iterations. This number is usually low.
@@ -76,22 +76,23 @@ export class ChineseWhispers<T> {
       for (const node of nodeList) {
         const neighborList = G.neighbors(node)
         const classes: any = {}
-        // do an inventory of the given nodes neighbours and edge weights
+        // do an inventory of the given nodes neighbours and edge distances
         // console.log(neighs)
         for (const neighbor of neighborList) {
-          // console.log('ne', ne)
+          // console.log('neighbor', neighbor)
+          // XXX: why need to be 'number'?
           if (typeof neighbor === 'number') {
             // console.log(classes)
             // console.log('class: ', G.node.get(ne)['class'])
             if (G.node.get(neighbor)['class'] in classes) {
-              classes[G.node.get(neighbor)['class']] += G.get(node).get(neighbor)['weight']
+              classes[G.node.get(neighbor)['class']] += G.get(node).get(neighbor)['distance']
             } else {
-              classes[G.node.get(neighbor)['class']] = G.get(node).get(neighbor)['weight']
-              // console.log('else: ', G.node.get(ne)['class'], G.get(node).get(ne)['weight'])
+              classes[G.node.get(neighbor)['class']] = G.get(node).get(neighbor)['distance']
+              // console.log('else: ', G.node.get(ne)['class'], G.get(node).get(ne)['distance'])
             }
           }
         }
-        // find the class with the highest edge weight sum
+        // find the class with the highest edge distance sum
         let max = 0
         let maxclass = 0
         Object.keys(classes).forEach(c => {
@@ -104,27 +105,51 @@ export class ChineseWhispers<T> {
         G.node.get(node)['class'] = maxclass
       }
     }
-
-    for (const node of G.nodes()) {
-      console.log(node, G.node.get(node)['class'])
-    }
-    return [[1, 2]]
+    const clusterList = this.buildClusterList(G)
+    return clusterList
   }
 
-  private buildNetwork(data: T[], distance: DistanceFunc<T>) {
+  public buildClusterList(G: any): Cluster[] {
+    const clusterList: Cluster[] = []
+    const classIndexMap: {[key: number]: number} = {}
+    let index = 0
+
+    for (const node of G.nodes()) {
+      const nodeClass = G.node.get(node)['class']
+      if (!(nodeClass in classIndexMap)) {
+        classIndexMap[nodeClass] = index++
+      }
+
+      const classIndex = classIndexMap[nodeClass]
+      if (!(classIndex in clusterList)) {
+        clusterList[classIndex] = []
+      }
+
+      clusterList[classIndex].push(node)
+    }
+    return clusterList
+  }
+
+  public buildNetwork(
+    data: T[],
+    distance: DistanceFunc<T>,
+    threshold: number,
+  ) {
     const nodeList: CWNode[] = [...data.keys()] // [0, 1, 2, ..., data.length - 1]
     const edgeList: CWEdge[] = []
 
     for (let i = 0; i < data.length; i++) {
       for (let j = i + 1; j < data.length; j++) {
         const dist = distance(data[i], data[j])
-        const edge: CWEdge = [i, j, { weight: dist }]
-        edgeList.push(edge)
+        if (dist < threshold) {
+          const edge: CWEdge = [i, j, { distance: dist }]
+          edgeList.push(edge)
+        }
       }
     }
 
-    console.log('nodeList: ', nodeList)
-    console.log('edgeList: ', edgeList)
+    // console.log('nodeList: ', nodeList)
+    // console.log('edgeList: ', edgeList)
 
     // initialize the graph
     const G = new jsnx.Graph()

@@ -50,3 +50,4 @@ console.log(indics[2])      //  [20, 21, 22]
 * [Chinese Whispers Graph Clustering in Python](http://alexloveless.co.uk/data/chinese-whispers-graph-clustering-in-python/)
 * Wikipedia: [Chinese Whispers (clustering method)](https://en.wikipedia.org/wiki/Chinese_Whispers_(clustering_method))
 * Paper: [Chinese Whispers - an Efficient Graph Clustering Algorithm and its Application to Natural Language Processing Problems](https://pdfs.semanticscholar.org/3e71/0251cb01ba6e1c0c735591776a212edc461f.pdf)
+* [The meaning and origin of the expression: Chinese whispers](http://www.phrases.org.uk/meanings/chinese-whispers.html)
