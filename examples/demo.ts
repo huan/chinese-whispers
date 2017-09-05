@@ -1,15 +1,15 @@
 import ChineseWhispers from '../' // chinese-whispers'
 
-function distanceFunc(a: number, b: number): number {
+function weightFunc(a: number, b: number): number {
   const dist = Math.abs(a - b)
   // console.log('a: ', a, ' b: ', b, ' dist: ', dist)
-  return dist
+  return 1 / dist
 }
 
 const cw = new ChineseWhispers({
-  distance:  distanceFunc,
-  threshold: 5,
+  weightFunc,
   epochs: 10,
+  threshold: 1 / 10,
 })
 
 const array = [
@@ -27,7 +27,7 @@ const array = [
 ]
 
 const clusterIndicesList = cw.cluster(array)
-console.log(typeof clusterIndicesList)
+console.log(clusterIndicesList)
 // for (const i in clusterIndicesList) {
 //   console.log('Cluster[' + i + ']: ' + clusterIndicesList[i])
 // }
