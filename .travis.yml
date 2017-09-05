@@ -25,6 +25,7 @@ cache:
 
 before_deploy:
   - npm version
+  - npm run dist
 
 deploy:
   provider: npm
