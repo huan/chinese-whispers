@@ -15,7 +15,7 @@
     "lint:ts": "tslint --version && tslint --project tsconfig.json --type-check --exclude \"dist/\" \"{bin,examples,src,tests}/**/*.ts\" && npm run clean && tsc --noEmit",
     "rollup": "rollup -c",
     "test": "tap \"src/**/*.spec.ts\" \"test/**/*.spec.ts\"",
-    "test:npm": "export TMPDIR=/tmp/chinese-whispers-npm.$$ && mkdir $TMPDIR && npm pack && mv chinese-whispers-*.*.*.tgz $TMPDIR && cp tests/fixtures/smoke-testing.js $TMPDIR && cd $TMPDIR && npm init -y && npm install chinese-whispers-*.*.*.tgz && node smoke-testing.js",
+    "test:npm": "npm run dist && export TMPDIR=/tmp/chinese-whispers-npm.$$ && mkdir $TMPDIR && npm pack && mv chinese-whispers-*.*.*.tgz $TMPDIR && cp tests/fixtures/smoke-testing.js $TMPDIR && cd $TMPDIR && npm init -y && npm install chinese-whispers-*.*.*.tgz && node smoke-testing.js",
     "test:unit": "tap -R tap test/unit/**/*.spec.ts"
   },
   "repository": {
