@@ -6,44 +6,102 @@ const jsnx  = require('jsnetworkx')
 
 import { ChineseWhispers }  from './chinese-whispers'
 
-t.only('Cluster', async (t: any) => {
+// t.only('test', async (t: any) => {
+//   const NUMBER_LIST = [
+//     0, 1, 2,
+//     10, 13, 15,
+//     25, 30, 35,
+//     160, 170, 180,
+//   ]
+//   const cw = new ChineseWhispers({
+//     weightFunc,
+//     threshold: 1 / 6,
+//   })
+
+//   const clusterIndicesList = cw.cluster(NUMBER_LIST)
+
+//   // console.log(clusterIndicesList.map(ci => ci.map(i => NUMBER_LIST[i])))
+
+//   t.equal(clusterIndicesList.length, 6, 'should get expect number of clusters')
+// })
+
+t.test('Cluster', async (t: any) => {
 
   const NUMBER_LIST = [
     0, 1, 2,
-    10, 11, 12,
-
-    20, 30, 40,
-    60, 70, 80,
-
-    100, 200, 300,
-    500, 600, 700,
+    10, 13, 15,
+    25, 30, 35,
+    160, 170, 180,
   ]
+
+  const EXPECTED_NO_THRESHOLD_CLUSTER = {
+    0: [
+      0, 1, 2,
+    ],
+    1: [
+      10, 13, 15,
+    ],
+    2: [
+      25, 30, 35,
+    ],
+    3: [
+      160, 170, 180,
+    ],
+  }
+
+  const EXPECTED_THRESHOLD_1_6_CLUSTER = {
+    0: [
+      0, 1, 2,
+    ],
+    1: [
+      10, 13, 15,
+    ],
+    2: [
+      25, 30, 35,
+    ],
+    3: [
+      160,
+    ],
+    4: [
+     170,
+    ],
+    5: [
+      180,
+    ],
+  }
 
   t.test('no threshold', async (t: any) => {
     const cw = new ChineseWhispers({
       weightFunc,
     })
     const clusterIndicesList = cw.cluster(NUMBER_LIST)
-    console.log(clusterIndicesList.map(cluster => cluster.map(node => NUMBER_LIST[node])))
+    // console.log(clusterIndicesList.map(cluster => cluster.map(node => NUMBER_LIST[node])))
 
-    t.equal(clusterIndicesList.length, 2, 'should get 2 clusters')
-    // t.deepEqual(clusterIndicesList[0].length, 15, 'should get 15 items for cluster 0')
-    // t.deepEqual(clusterIndicesList[1].map(i => NUMBER_LIST[i]), [500, 600, 700], 'should get [500 600 700] for cluster 1')
+    t.equal(clusterIndicesList.length, Object.keys(EXPECTED_NO_THRESHOLD_CLUSTER).length, 'should get expect number of clusters')
+    for (const i in EXPECTED_NO_THRESHOLD_CLUSTER) {
+      t.deepEqual(clusterIndicesList[parseInt(i)].map(idx => NUMBER_LIST[idx]),
+                  (EXPECTED_NO_THRESHOLD_CLUSTER as any)[i],
+                  'should get expected items for cluster ' + i
+                )
+    }
   })
 
-  // t.test('threshold 1/5', async (t: any) => {
-  //   const cw = new ChineseWhispers({
-  //     weightFunc,
-  //     threshold: 1/50,
-  //   })
+  t.test('threshold 1/6', async (t: any) => {
+    const cw = new ChineseWhispers({
+      weightFunc,
+      threshold: 1 / 6,
+    })
 
-  //   const clusterIndicesList = cw.cluster(NUMBER_LIST)
+    const clusterIndicesList = cw.cluster(NUMBER_LIST)
 
-  //   t.equal(clusterIndicesList.length, 3, 'should get 3 clusters')
-  //   t.deepEqual(clusterIndicesList[0].map(i => NUMBER_LIST[i]), [0, 1, 2], 'should get [0 1 2] for cluster 0')
-  //   t.deepEqual(clusterIndicesList[1].map(i => NUMBER_LIST[i]), [10, 11, 12], 'should get [10 11 12] for cluster 1')
-  //   t.deepEqual(clusterIndicesList[2].map(i => NUMBER_LIST[i]), [20, 21, 22], 'should get [20 21 22] for cluster 2')
-  // })
+    t.equal(clusterIndicesList.length, Object.keys(EXPECTED_THRESHOLD_1_6_CLUSTER).length, 'should get expect number of clusters')
+    for (const i in EXPECTED_THRESHOLD_1_6_CLUSTER) {
+      t.deepEqual(clusterIndicesList[parseInt(i)].map(idx => NUMBER_LIST[idx]),
+                  (EXPECTED_THRESHOLD_1_6_CLUSTER as any)[i],
+                  'should get expected items for cluster ' + i
+                )
+    }
+  })
 })
 
 t.test('buildNetwork()', async (t: any) => {
@@ -80,7 +138,7 @@ t.test('buildNetwork()', async (t: any) => {
     t.equal(edgeList.length, 15, 'should turn data to 15 edges for threshold 1/50')
   })
 
-  t.test('weight threshold 1/50', async (t: any) => {
+  t.test('weight threshold 1/500', async (t: any) => {
     const G = cw.buildNetwork(DATA, weightFunc, 1 / 500)
     const edgeList = G.edges()
     t.equal(edgeList.length, 36, 'should turn data to 36 edges for threshold 1/500')
@@ -90,11 +148,11 @@ t.test('buildNetwork()', async (t: any) => {
 
 t.test('buildClusterList()', async (t: any) => {
   const NODE_LIST = [
-    [1, { class: 'a' }],
-    [2, { class: 'b' }],
-    [3, { class: 'a' }],
-    [4, { class: 'b' }],
-    [5, { class: 'a' }],
+    [1, { label: 'a' }],
+    [2, { label: 'b' }],
+    [3, { label: 'a' }],
+    [4, { label: 'b' }],
+    [5, { label: 'a' }],
   ]
   const G = new jsnx.Graph()
   G.addNodesFrom(NODE_LIST)

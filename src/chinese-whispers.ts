@@ -119,7 +119,7 @@ export class ChineseWhispers<T> extends EventEmitter {
       // set the label of target node to the winning local label
       this.emit('change', node, nodeAttr['label'], newLabel)
       nodeAttr['label'] = newLabel
-      console.log('set node ' + this.data[node] + ' label to ' + this.data[parseInt(newLabel)])
+      // console.log('set node ' + this.data[node] + ' label to ' + this.data[parseInt(newLabel)])
     }
   }
 
@@ -127,8 +127,13 @@ export class ChineseWhispers<T> extends EventEmitter {
     const nxNode       = this.graph.get(node)
     const neighborList = this.graph.neighbors(node)
 
-    console.log('neighbors of node ' + this.data[node]
-        + ' is: ', neighborList.map((i: number) => this.data[i]))
+    if (neighborList.length === 0) {
+      const attr = this.graph.node.get(node)
+      return attr['label']  // return self label if no neighbors
+    }
+
+    // console.log('neighbors of node ' + this.data[node]
+    //     + ' is: ', neighborList.map((i: number) => this.data[i]))
 
     const labelWeightMap = {} as {
       [key: string]: number,
@@ -143,19 +148,19 @@ export class ChineseWhispers<T> extends EventEmitter {
       const edgeAttr = nxNode.get(neighbor)
       const weight   = edgeAttr['weight']
 
-      console.log('### ', weight, ' ###')
+      // console.log('### ', weight, ' ###')
       labelWeightMap[label] += weight
     }
     // find the label with the highest edge weight sum
     let max = 0
     // In javascript the keys of object can only be strings
     //  - https://stackoverflow.com/a/41870625/1123955
-    let maxLabel = '0'
+    let maxLabel = '-1'
 
-    for (const label in labelWeightMap) {
-      console.log('labelWeight node: ' + this.data[node] + ' - '
-          + this.data[parseInt(label)] + ' is: ', labelWeightMap[label])
-    }
+    // for (const label in labelWeightMap) {
+    //   console.log('labelWeight node: ' + this.data[node] + ' - '
+    //       + this.data[parseInt(label)] + ' is: ', labelWeightMap[label])
+    // }
 
     for (const label in labelWeightMap) {
       if (labelWeightMap[label] > max) {
@@ -199,6 +204,7 @@ export class ChineseWhispers<T> extends EventEmitter {
       for (let j = i + 1; j < data.length; j++) {
         const weight = weightFunc(data[i], data[j])
         if (threshold && threshold > weight) {
+          // console.log('threshold: ', threshold, ' weight: ', weight)
           // skip this edge because it's weight is below threshold
           this.emit('edge')
         } else {
@@ -218,10 +224,13 @@ export class ChineseWhispers<T> extends EventEmitter {
     // Here I use the ID of the node since I know it's unique
     // You could use a random number or a counter or anything really
     for (const n of G.nodes()) {
-      G.node.get(n)['label'] = n
+      const nodeAttr = G.node.get(n)
+      nodeAttr['label'] = n
     }
     // add edges
     G.addEdgesFrom(edgeList)
+
+    // console.log(edgeList)
 
     return G
   }
