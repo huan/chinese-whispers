@@ -132,6 +132,16 @@ SEE ALSO
 
 * [The meaning and origin of the expression: Chinese whispers](http://www.phrases.org.uk/meanings/chinese-whispers.html)
 
+CHANGELOG
+---------
+
+## v0.1 / Master
+
+1. `ChineseWhispers` class
+1. `cluster()` class method
+1. Unit test cases
+1. Travis CI & CD(publish to NPM automatically)
+
 AUTHOR
 ------
 Huan LI \<zixia@zixia.net\> (http://linkedin.com/in/zixia)
