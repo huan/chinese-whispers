@@ -1,0 +1,34 @@
+sudo: required
+dist: trusty
+os:
+  - linux
+
+language: node_js
+node_js:
+  - '6'
+  - '7'
+  - '8'
+
+addons:
+  chrome: stable
+
+script:
+  - echo $TRAVIS_OS_NAME
+  - node --version
+  - npm --version
+  - npm test
+  - npm run test:npm && echo 'Npm packing test passed'
+
+cache:
+  directories:
+    - node_modules
+
+before_deploy:
+  - npm version
+
+deploy:
+  provider: npm
+  email: zixia@zixia.net
+  api_key: "$NPM_TOKEN"
+  skip_cleanup: true
+
