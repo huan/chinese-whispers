@@ -1,6 +1,6 @@
 {
   "name": "chinese-whispers",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Chinese Whispers Algorithm",
   "main": "index.js",
   "scripts": {
