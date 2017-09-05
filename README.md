@@ -1,50 +1,55 @@
 # chinese-whispers
 An Efficient Graph Clustering Algorithm for Node.js
 
-# Insall
+ALGORITHM
+---------
+* Wikipedia: [Chinese Whispers (clustering method)](https://en.wikipedia.org/wiki/Chinese_Whispers_(clustering_method))
+* Slide: [Chinese Whispers - an Efficient Graph Clustering Algorithm and its Application to Natural Language Processing Problems](http://wortschatz.uni-leipzig.de/~cbiemann/pub/2006/BiemannTextGraph06.pdf)
+* Paper: [Chinese Whispers - an Efficient Graph Clustering Algorithm and its Application to Natural Language Processing Problems](https://pdfs.semanticscholar.org/3e71/0251cb01ba6e1c0c735591776a212edc461f.pdf)
+
+INSTALL
+-------
 
 ```shell
 npm install chinese-whispers
 ```
 
-# Example
+EXAMPLE
+-------
 
 ```ts
-import ChineseWhispers from 'chinese-whispers'
+import { ChineseWhispers } from '../src/chinese-whispers'
 
-function distanceFunc(a, b) {
-  return Math.abs(a - b)
+function weightFunc(a: number, b: number): number {
+  const dist = Math.abs(a - b)
+  return 1 / dist
 }
 
 const cw = new ChineseWhispers({
-  distance:  distanceFunc,
-  threshold: 5,
-  epochs: 10,
+  weightFunc,
 })
 
 const array = [
-  0,
-  1,
-  2,
-
-  10,
-  11,
-  12,
-
-  20,
-  21,
-  22,
+  0, 1, 2,
+  10, 11, 12,
+  20, 21, 22,
 ]
 
-const indicesList = cw.fit(array)
-
-console.log(indics.length)  // 3
-console.log(indics[0])      //  [0, 1, 2]
-console.log(indics[1])      //  [10, 11, 12]
-console.log(indics[2])      //  [20, 21, 22]
+const clusterIndicesList = cw.cluster(array)
+for (const i in clusterIndicesList) {
+  const clusterIndices = clusterIndicesList[i]
+  const cluster = clusterIndices.map(j => array[j])
+  console.log('Cluster[' + i + ']: ' + cluster)
+}
+// Cluster[0]: 0,1,2
+// Cluster[1]: 10,11,12
+// Cluster[2]: 20,21,22
 ```
 
-# Credits
+Source code can be found at: <https://github.com/zixia/chinese-whispers/blob/master/examples/demo.ts>
+
+CREDITS
+-------
 
 This project is inspired by:
 
@@ -53,9 +58,21 @@ This project is inspired by:
 * [Implementation of the Chinese Whispers graph clustering algorithm in Java](https://github.com/uhh-lt/chinese-whispers)
 * [Chinese Whispers Graph Clustering Algorithm in Javascript](https://github.com/anvaka/ngraph.cw)
 
-### Links
+SEE ALSO
+---------
 
-* Wikipedia: [Chinese Whispers (clustering method)](https://en.wikipedia.org/wiki/Chinese_Whispers_(clustering_method))
-* [Chinese Whispers - an Efficient Graph Clustering Algorithm and its Application to Natural Language Processing Problems](http://wortschatz.uni-leipzig.de/~cbiemann/pub/2006/BiemannTextGraph06.pdf)
-* Paper: [Chinese Whispers - an Efficient Graph Clustering Algorithm and its Application to Natural Language Processing Problems](https://pdfs.semanticscholar.org/3e71/0251cb01ba6e1c0c735591776a212edc461f.pdf)
 * [The meaning and origin of the expression: Chinese whispers](http://www.phrases.org.uk/meanings/chinese-whispers.html)
+
+AUTHOR
+------
+Huan LI \<zixia@zixia.net\> (http://linkedin.com/in/zixia)
+
+<a href="http://stackoverflow.com/users/1123955/zixia">
+  <img src="http://stackoverflow.com/users/flair/1123955.png" width="208" height="58" alt="profile for zixia at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for zixia at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+</a>
+
+COPYRIGHT & LICENSE
+-------------------
+* Code & Docs © 2017 Huan LI \<zixia@zixia.net\>
+* Code released under the Apache-2.0 License
+* Docs released under Creative Commons
