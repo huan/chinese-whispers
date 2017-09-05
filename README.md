@@ -2,6 +2,9 @@ CHINESE-WHISPERS
 ----------------
 An Efficient Graph Clustering Algorithm for Node.js
 
+![Chinese Whispers](https://zixia.github.io/chinese-whispers/images/chinese-whispers.gif)
+> Picture credit: http://www.wikihow.com/Play-Chinese-Whispers
+
 ALGORITHM
 ---------
 
