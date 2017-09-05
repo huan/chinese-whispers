@@ -197,7 +197,10 @@ export class ChineseWhispers<T> extends EventEmitter {
     weightFunc: WeightFunc<T>,
     threshold?: number,
   ) {
-    const nodeList: CWNode[] = [...data.keys()] // [0, 1, 2, ..., data.length - 1]
+
+    const nodeList: CWNode[] = Object.keys(data).map(k => parseInt(k)) // [0, 1, 2, ..., data.length - 1]
+    // const nodeList: CWNode[] = [...data.keys()] // [0, 1, 2, ..., data.length - 1]
+
     const edgeList: CWEdge[] = []
 
     for (let i = 0; i < data.length; i++) {
