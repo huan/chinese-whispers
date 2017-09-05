@@ -63,7 +63,7 @@ API
 
 The `ChineseWhispers` class is all you need to run the Chinese Whispers Algorithm.
 
-## 1. `constructor(options: ChineseWhisperOptions)`
+### 1. `constructor(options: ChineseWhisperOptions)`
 
 ```ts
 interface ChineseWhispersOptions<T> {
@@ -97,7 +97,7 @@ const cw = new ChineseWhispers({
 })
 ```
 
-## 2. `cluster(dataList): number[][]`
+### 2. `cluster(dataList): number[][]`
 
 Process `dataList` which is an array of data, returns the cluster results as an array, each array item is a cluster, and each cluster includes the indices of the dataList that belongs to this cluster.
 
@@ -120,6 +120,7 @@ The code is heavily inspired by the following implementation:
 
 * [facenet chinese whispers(face cluster) in Python - zhly0](http://blog.csdn.net/liyuan123zhouhui/article/details/70312716)
 * [Chinese Whispers Graph Clustering in Python - Alex Loveless](http://alexloveless.co.uk/data/chinese-whispers-graph-clustering-in-python/)
+* [A Python implementation of Chris Biemann's algorithm for graph clustering](https://github.com/sanmayaj/ChineseWhispers)
 * [Implementation of the Chinese Whispers graph clustering algorithm in Java](https://github.com/uhh-lt/chinese-whispers)
 * [Chinese Whispers Graph Clustering Algorithm in Javascript](https://github.com/anvaka/ngraph.cw)
 
