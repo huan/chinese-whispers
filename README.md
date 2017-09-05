@@ -79,22 +79,24 @@ interface ChineseWhispersOptions<T> {
 const nj = require('numjs') // a Javascript implementation of numpy in Python
 
 // calculate the distance between vectors
+function weightFunc(v1, v2) {
+  const njV1 = nj.array(v1)
+  const njV2 = nj.array(v2)
+  const l2 = njV1.subtract(njV2)
+                .pow(2)
+                .sum()
+  const dist = Math.sqrt(l2)
+  return 1 / dist
+}
+
 const cw = new ChineseWhispers({
-  weightFunc: (a, b) {
-    const njA = nj.array(a)
-    const njB = nj.array(b)
-    const l2 = njA.subtract(njB)
-                  .pow(2)
-                  .sum()
-    const dist = Math.sqrt(l2)
-    return 1 / dist
-  }
+  weightFunc,
 })
 ```
 
 ## 2. `cluster(dataList): number[][]`
 
-Process `dataList` which is an array of datas, then return the cluster result as an array, each array item is a cluster, and each cluster includes all the indices of the dataList.
+Process `dataList` which is an array of data, returns the cluster results as an array, each array item is a cluster, and each cluster includes the indices of the dataList that belongs to this cluster.
 
 ```ts
 const clusterIndicesList = cw.cluster(dataList)
