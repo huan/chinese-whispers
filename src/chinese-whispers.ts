@@ -47,7 +47,7 @@ export class ChineseWhispers<T> extends EventEmitter {
   private threshold?: number
 
   private graph: any  // jsnetworkx instance
-  private data:  T[]
+  private dataList:  T[]
 
   private changeCounter: number
 
@@ -82,9 +82,9 @@ export class ChineseWhispers<T> extends EventEmitter {
     return super.emit(event, ...args)
   }
 
-  public cluster(data: T[]): Cluster[] {
-    this.data  = data
-    this.graph = this.buildNetwork(data, this.weightFunc, this.threshold)
+  public cluster(dataList: T[]): Cluster[] {
+    this.dataList = dataList
+    this.graph    = this.buildNetwork(dataList, this.weightFunc, this.threshold)
 
     // initial epoch
     this.emit('epoch', this.graph, -1)
@@ -193,19 +193,19 @@ export class ChineseWhispers<T> extends EventEmitter {
   }
 
   public buildNetwork(
-    data:       T[],
+    dataList:   T[],
     weightFunc: WeightFunc<T>,
     threshold?: number,
   ) {
 
-    const nodeList: CWNode[] = Object.keys(data).map(k => parseInt(k)) // [0, 1, 2, ..., data.length - 1]
+    const nodeList: CWNode[] = Object.keys(dataList).map(k => parseInt(k)) // [0, 1, 2, ..., data.length - 1]
     // const nodeList: CWNode[] = [...data.keys()] // [0, 1, 2, ..., data.length - 1]
 
     const edgeList: CWEdge[] = []
 
-    for (let i = 0; i < data.length; i++) {
-      for (let j = i + 1; j < data.length; j++) {
-        const weight = weightFunc(data[i], data[j])
+    for (let i = 0; i < dataList.length; i++) {
+      for (let j = i + 1; j < dataList.length; j++) {
+        const weight = weightFunc(dataList[i], dataList[j])
         if (threshold && threshold > weight) {
           // console.log('threshold: ', threshold, ' weight: ', weight)
           // skip this edge because it's weight is below threshold

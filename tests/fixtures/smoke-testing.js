@@ -10,17 +10,17 @@ const cw = new ChineseWhispers({
   weightFunc,
 })
 
-const data = [
+const dataList = [
   0, 1, 2,
   10, 11, 12,
   20, 21, 22,
 ]
 
-const clusterIndicesList = cw.cluster(data)
+const clusterIndicesList = cw.cluster(dataList)
 
 for (const i in clusterIndicesList) {
   const clusterIndices = clusterIndicesList[i]
-  const cluster = clusterIndices.map(j => data[j])
+  const cluster = clusterIndices.map(j => dataList[j])
   console.log('Cluster[' + i + ']: ' + cluster)
 }
 // Cluster[0]: 0,1,2
