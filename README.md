@@ -1,5 +1,8 @@
 CHINESE-WHISPERS
 ----------------
+
+[![Build Status](https://travis-ci.org/zixia/chinese-whispers.svg?branch=master)](https://travis-ci.org/zixia/chinese-whispers) [![NPM Version](https://badge.fury.io/js/chinese-whispers.svg)](https://badge.fury.io/js/chinese-whispers) [![Downloads](http://img.shields.io/npm/dm/chinese-whispers.svg?style=flat-square)](https://npmjs.org/package/chinese-whispers) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
+
 An Efficient Graph Clustering Algorithm for Node.js
 
 ![Chinese Whispers](https://zixia.github.io/chinese-whispers/images/chinese-whispers.gif)
