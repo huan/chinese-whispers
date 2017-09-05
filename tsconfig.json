@@ -13,6 +13,7 @@
     , "noImplicitAny": true
     , "noUnusedParameters": true
     , "noImplicitThis": true
+    , "downlevelIteration": true
 
     , "noLib": false
     , "traceResolution": false
