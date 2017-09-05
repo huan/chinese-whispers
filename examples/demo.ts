@@ -1,4 +1,4 @@
-import ChineseWhispers from '../' // chinese-whispers'
+import { ChineseWhispers } from '../src/chinese-whispers' // chinese-whispers'
 
 function weightFunc(a: number, b: number): number {
   const dist = Math.abs(a - b)

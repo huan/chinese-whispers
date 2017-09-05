@@ -58,3 +58,10 @@ typings/
 .env
 
 package-lock.json
+
+t/
+t.*
+.*.swp
+/dist/
+/chinese-whispers-*.*.*.tgz
+/bundles/

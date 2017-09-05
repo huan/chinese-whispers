@@ -1,4 +1,7 @@
-export * from './src/chinese-whispers'
+import { ChineseWhispers } from './src/chinese-whispers'
 
-import ChineseWhispers from './src/chinese-whispers'
+export {
+  ChineseWhispers,
+}
+
 export default ChineseWhispers

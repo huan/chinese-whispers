@@ -4,7 +4,7 @@ const t     = require('tap')  // tslint:disable:no-shadowed-variable
 
 const jsnx  = require('jsnetworkx')
 
-import { ChineseWhispers }  from '../'
+import { ChineseWhispers }  from './chinese-whispers'
 
 t.only('Cluster', async (t: any) => {
 
