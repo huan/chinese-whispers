@@ -81,7 +81,7 @@ t.test('Cluster', async (t: any) => {
     for (const i in EXPECTED_NO_THRESHOLD_CLUSTER) {
       t.deepEqual(clusterIndicesList[parseInt(i)].map(idx => NUMBER_LIST[idx]),
                   (EXPECTED_NO_THRESHOLD_CLUSTER as any)[i],
-                  'should get expected items for cluster ' + i
+                  'should get expected items for cluster ' + i,
                 )
     }
   })
@@ -98,7 +98,7 @@ t.test('Cluster', async (t: any) => {
     for (const i in EXPECTED_THRESHOLD_1_6_CLUSTER) {
       t.deepEqual(clusterIndicesList[parseInt(i)].map(idx => NUMBER_LIST[idx]),
                   (EXPECTED_THRESHOLD_1_6_CLUSTER as any)[i],
-                  'should get expected items for cluster ' + i
+                  'should get expected items for cluster ' + i,
                 )
     }
   })
