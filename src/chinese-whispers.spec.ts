@@ -69,19 +69,19 @@ t.test('buildNetwork()', async (t: any) => {
   })
 
   t.test('weight threshold 1/5', async (t: any) => {
-    const G = cw.buildNetwork(DATA, weightFunc, 1/5)
+    const G = cw.buildNetwork(DATA, weightFunc, 1 / 5)
     const edgeList = G.edges()
     t.equal(edgeList.length, 3, 'should turn data to 3 edges for threshold 1/5')
   })
 
   t.test('weight threshold 1/50', async (t: any) => {
-    const G = cw.buildNetwork(DATA, weightFunc, 1/50)
+    const G = cw.buildNetwork(DATA, weightFunc, 1 / 50)
     const edgeList = G.edges()
     t.equal(edgeList.length, 15, 'should turn data to 15 edges for threshold 1/50')
   })
 
   t.test('weight threshold 1/50', async (t: any) => {
-    const G = cw.buildNetwork(DATA, weightFunc, 1/500)
+    const G = cw.buildNetwork(DATA, weightFunc, 1 / 500)
     const edgeList = G.edges()
     t.equal(edgeList.length, 36, 'should turn data to 36 edges for threshold 1/500')
   })

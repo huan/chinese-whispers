@@ -52,7 +52,7 @@ export class ChineseWhispers<T> extends EventEmitter {
   private changeCounter: number
 
   constructor(
-    options: ChineseWhispersOptions<T>
+    options: ChineseWhispersOptions<T>,
   ) {
     super()
 
@@ -152,12 +152,12 @@ export class ChineseWhispers<T> extends EventEmitter {
     //  - https://stackoverflow.com/a/41870625/1123955
     let maxLabel = '0'
 
-    for (let label in labelWeightMap) {
+    for (const label in labelWeightMap) {
       console.log('labelWeight node: ' + this.data[node] + ' - '
           + this.data[parseInt(label)] + ' is: ', labelWeightMap[label])
     }
 
-    for (let label in labelWeightMap) {
+    for (const label in labelWeightMap) {
       if (labelWeightMap[label] > max) {
         max = labelWeightMap[label]
         maxLabel = label
