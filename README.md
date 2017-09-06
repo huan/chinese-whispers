@@ -102,7 +102,7 @@ const cw = new ChineseWhispers({
 
 ### 2. `cluster(dataList): number[][]`
 
-Process `dataList` which is an array of data, returns the cluster results as an array, each array item is a cluster, and each cluster includes the indices of the dataList that belongs to this cluster.
+Process `dataList` which is an array of data, returns the cluster results as an array, each array item is a cluster, and each cluster is an array which includes the indices of dataList that belongs to this cluster.
 
 ```ts
 const clusterIndicesList = cw.cluster(dataList)
