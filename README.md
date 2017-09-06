@@ -131,6 +131,7 @@ SEE ALSO
 ---------
 
 * [The meaning and origin of the expression: Chinese whispers](http://www.phrases.org.uk/meanings/chinese-whispers.html)
+* [TensorFlow backed FaceNet implementation for Node.js](https://github.com/zixia/node-facenet) - Face verification, face recognition and face clustering.
 
 CHANGELOG
 ---------
