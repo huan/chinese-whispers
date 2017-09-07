@@ -3,7 +3,7 @@ CHINESE-WHISPERS
 
 [![Build Status](https://travis-ci.org/zixia/chinese-whispers.svg?branch=master)](https://travis-ci.org/zixia/chinese-whispers) [![NPM Version](https://badge.fury.io/js/chinese-whispers.svg)](https://badge.fury.io/js/chinese-whispers) [![Downloads](http://img.shields.io/npm/dm/chinese-whispers.svg?style=flat-square)](https://npmjs.org/package/chinese-whispers) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
 
-An Efficient Graph Clustering Algorithm for Node.js
+An Efficient Graph Clustering Algorithm for JavaScript/Node.js
 
 ![Chinese Whispers](https://zixia.github.io/chinese-whispers/images/chinese-whispers.gif)
 > Picture credit: http://www.wikihow.com/Play-Chinese-Whispers
@@ -12,6 +12,7 @@ ALGORITHM
 ---------
 
 Chinese Whispers - _an Efficient Graph Clustering Algorithm and its Application to Natural Language Processing Problems_
+> Author: Chris Biemann, University of Leipzig, NLP-Dept. Leipzig, Germany
 
 1. [Wikipedia](https://en.wikipedia.org/wiki/Chinese_Whispers_(clustering_method))
 1. [Slide](https://www.lt.informatik.tu-darmstadt.de/fileadmin/user_upload/Group_LangTech/publications/pre-langtech/BiemannTextgraphs06.ppt) - 2006 TextGraphs 06, NYC, USA
