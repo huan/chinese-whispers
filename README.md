@@ -11,7 +11,7 @@ An Efficient Graph Clustering Algorithm for Node.js
 ALGORITHM
 ---------
 
-Chinese Whispers - an Efficient Graph Clustering Algorithm and its Application to Natural Language Processing Problems
+Chinese Whispers - _an Efficient Graph Clustering Algorithm and its Application to Natural Language Processing Problems_
 
 1. [Wikipedia](https://en.wikipedia.org/wiki/Chinese_Whispers_(clustering_method))
 1. [Slide](http://wortschatz.uni-leipzig.de/~cbiemann/pub/2006/BiemannTextGraph06.pdf)
