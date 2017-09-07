@@ -14,7 +14,7 @@ ALGORITHM
 Chinese Whispers - _an Efficient Graph Clustering Algorithm and its Application to Natural Language Processing Problems_
 
 1. [Wikipedia](https://en.wikipedia.org/wiki/Chinese_Whispers_(clustering_method))
-1. [Slide - Chris Biemann, 2006 TextGraphs 06, NYC, USA](https://www.lt.informatik.tu-darmstadt.de/fileadmin/user_upload/Group_LangTech/publications/pre-langtech/BiemannTextgraphs06.ppt)
+1. [Slide](https://www.lt.informatik.tu-darmstadt.de/fileadmin/user_upload/Group_LangTech/publications/pre-langtech/BiemannTextgraphs06.ppt) - 2006 TextGraphs 06, NYC, USA
 1. [Paper](https://pdfs.semanticscholar.org/3e71/0251cb01ba6e1c0c735591776a212edc461f.pdf)
 
 INSTALL
