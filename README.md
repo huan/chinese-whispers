@@ -32,7 +32,7 @@ Talk is cheap, show me the code!
 ```ts
 import { ChineseWhispers } from 'chinese-whispers'
 
-function weightFunc(a: number, b: number): number {
+function weightFunc(a, b) {
   const dist = Math.abs(a - b)
   return 1 / dist
 }
