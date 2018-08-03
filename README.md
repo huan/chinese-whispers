@@ -130,7 +130,12 @@ The code is heavily inspired by the following implementation:
 
 ## CHANGELOG
 
-### v0.1 / Master
+### v0.2 master
+
+1. Upgrade TypeScript to 3.0
+2. DevOps to npm@next
+
+### v0.1 Sep 2017
 
 1. `ChineseWhispers` class
 1. `cluster()` class method
