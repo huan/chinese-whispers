@@ -14,6 +14,8 @@
  */
 import { EventEmitter }   from 'events'
 
+// tslint:disable:no-var-requires
+
 const jsnx              = require('jsnetworkx')
 const { knuthShuffle }  = require('knuth-shuffle')
 
@@ -47,11 +49,11 @@ export class ChineseWhispers<T> extends EventEmitter {
   private threshold?: number
 
   private graph: any  // jsnetworkx instance
-  private dataList:  T[]
+  // private dataList:  T[]
 
   private changeCounter: number
 
-  constructor(
+  constructor (
     options: ChineseWhispersOptions<T>,
   ) {
     super()
@@ -63,27 +65,27 @@ export class ChineseWhispers<T> extends EventEmitter {
     this.on('change', () => this.changeCounter++)
   }
 
-  public on(event: 'edge',    listener: (edge: CWEdge) => void):                                     this
-  public on(event: 'change',  listener: (node: CWNode, oldLabel: string, newLabel: string) => void): this
-  public on(event: 'epoch',   listener: (graph: any, changeCounter: number) => void):                this
+  public on (event: 'edge',    listener: (edge: CWEdge) => void):                                     this
+  public on (event: 'change',  listener: (node: CWNode, oldLabel: string, newLabel: string) => void): this
+  public on (event: 'epoch',   listener: (graph: any, changeCounter: number) => void):                this
 
-  public on(event: never,       listener: any):                      this
-  public on(event: CWEventName, listener: (...args: any[]) => void): this {
+  public on (event: never,       listener: any):                      this
+  public on (event: CWEventName, listener: (...args: any[]) => void): this {
     super.on(event, listener)
     return this
   }
 
-  public emit(event: 'edge',    edge?:  CWEdge):                                     boolean
-  public emit(event: 'change',  node:   CWNode, oldLabel: string, newLabel: string): boolean
-  public emit(event: 'epoch',   graph:  any, changeCounter: number):                 boolean
+  public emit (event: 'edge',    edge?:  CWEdge):                                     boolean
+  public emit (event: 'change',  node:   CWNode, oldLabel: string, newLabel: string): boolean
+  public emit (event: 'epoch',   graph:  any, changeCounter: number):                 boolean
 
-  public emit(event: never,       ...args: any[]): boolean
-  public emit(event: CWEventName, ...args: any[]): boolean {
+  public emit (event: never,       ...args: any[]): boolean
+  public emit (event: CWEventName, ...args: any[]): boolean {
     return super.emit(event, ...args)
   }
 
-  public cluster(dataList: T[]): Cluster[] {
-    this.dataList = dataList
+  public cluster (dataList: T[]): Cluster[] {
+    // this.dataList = dataList
     this.graph    = this.buildNetwork(dataList, this.weightFunc, this.threshold)
 
     // initial epoch
@@ -102,7 +104,7 @@ export class ChineseWhispers<T> extends EventEmitter {
     return clusterList
   }
 
-  public iterate() {
+  public iterate () {
     const nodeList = this.graph.nodes()
     // I randomize the nodes to give me an arbitrary start point
     knuthShuffle(nodeList)  // orignal array modified
@@ -111,25 +113,25 @@ export class ChineseWhispers<T> extends EventEmitter {
     }
   }
 
-  public relabelNode(node: CWNode): void {
+  public relabelNode (node: CWNode): void {
     const newLabel = this.recalcLabel(node)
 
     const nodeAttr = this.graph.node.get(node)
-    if (nodeAttr['label'] !== newLabel) {
+    if (nodeAttr.label !== newLabel) {
       // set the label of target node to the winning local label
-      this.emit('change', node, nodeAttr['label'], newLabel)
-      nodeAttr['label'] = newLabel
+      this.emit('change', node, nodeAttr.label, newLabel)
+      nodeAttr.label = newLabel
       // console.log('set node ' + this.data[node] + ' label to ' + this.data[parseInt(newLabel)])
     }
   }
 
-  public recalcLabel(node: CWNode): string {
+  public recalcLabel (node: CWNode): string {
     const nxNode       = this.graph.get(node)
     const neighborList = this.graph.neighbors(node)
 
     if (neighborList.length === 0) {
       const attr = this.graph.node.get(node)
-      return attr['label']  // return self label if no neighbors
+      return attr.label  // return self label if no neighbors
     }
 
     // console.log('neighbors of node ' + this.data[node]
@@ -141,12 +143,12 @@ export class ChineseWhispers<T> extends EventEmitter {
     // do an inventory of the given nodes neighbours and edge weights
     for (const neighbor of neighborList) {
       const neighborAttr = this.graph.node.get(neighbor)
-      const label        = neighborAttr['label']
+      const label        = neighborAttr.label
       if (!(label in labelWeightMap)) {
         labelWeightMap[label] = 0
       }
       const edgeAttr = nxNode.get(neighbor)
-      const weight   = edgeAttr['weight']
+      const weight   = edgeAttr.weight
 
       // console.log('### ', weight, ' ###')
       labelWeightMap[label] += weight
@@ -171,13 +173,13 @@ export class ChineseWhispers<T> extends EventEmitter {
     return maxLabel
   }
 
-  public buildClusterList(G: any): Cluster[] {
+  public buildClusterList (G: any): Cluster[] {
     const clusterList: Cluster[] = []
     const labelIndexMap: {[key: string]: number} = {}
     let index = 0
 
     for (const node of G.nodes()) {
-      const label = G.node.get(node)['label']
+      const label = G.node.get(node).label
       if (!(label in labelIndexMap)) {
         labelIndexMap[label] = index++
       }
@@ -192,13 +194,13 @@ export class ChineseWhispers<T> extends EventEmitter {
     return clusterList
   }
 
-  public buildNetwork(
+  public buildNetwork (
     dataList:   T[],
     weightFunc: WeightFunc<T>,
     threshold?: number,
   ) {
 
-    const nodeList: CWNode[] = Object.keys(dataList).map(k => parseInt(k)) // [0, 1, 2, ..., data.length - 1]
+    const nodeList: CWNode[] = Object.keys(dataList).map(k => parseInt(k, 10)) // [0, 1, 2, ..., data.length - 1]
     // const nodeList: CWNode[] = [...data.keys()] // [0, 1, 2, ..., data.length - 1]
 
     const edgeList: CWEdge[] = []
@@ -228,7 +230,7 @@ export class ChineseWhispers<T> extends EventEmitter {
     // You could use a random number or a counter or anything really
     for (const n of G.nodes()) {
       const nodeAttr = G.node.get(n)
-      nodeAttr['label'] = n
+      nodeAttr.label = n
     }
     // add edges
     G.addEdgesFrom(edgeList)

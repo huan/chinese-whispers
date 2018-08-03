@@ -1,6 +1,8 @@
+// tslint:disable:no-console
+
 import { ChineseWhispers } from '../src/chinese-whispers'
 
-function weightFunc(a: number, b: number): number {
+function weightFunc (a: number, b: number): number {
   const dist = Math.abs(a - b)
   return 1 / dist
 }
@@ -17,7 +19,7 @@ const dataList = [
 
 const clusterIndicesList = cw.cluster(dataList)
 
-for (const i in clusterIndicesList) {
+for (let i = 0; i < clusterIndicesList.length; i++) {
   const clusterIndices = clusterIndicesList[i]
   const cluster = clusterIndices.map(j => dataList[j])
   console.log('Cluster[' + i + ']: ' + cluster)

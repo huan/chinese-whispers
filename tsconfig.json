@@ -21,6 +21,7 @@
   , "exclude": [
       "node_modules/"
     , "dist/"
+    , "tests/fixtures/"
   ]
   , "include": [
        "index.ts"

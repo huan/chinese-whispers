@@ -1,40 +1,52 @@
-sudo: required
-dist: trusty
 os:
   - linux
 
 language: node_js
 node_js:
-  - '6'
-  - '7'
-  - '8'
-
-addons:
-  chrome: stable
-
-script:
-  - echo $TRAVIS_OS_NAME
-  - node --version
-  - npm --version
-  - npm test
-  - npm run test:npm && echo 'Npm packing test passed'
+  - 10
+  - 9
 
 cache:
   directories:
     - node_modules
 
+stages:
+  - test
+  - pack
+  - name: deploy
+    if: (type = push) AND branch =~ ^(master|v\d+\.\d+)$
+
+script:
+  - echo $TRAVIS_OS_NAME
+  - node --version
+  - npm --version
+  - echo "Testing Started ..."
+  - npm test
+  - echo "Testing Finished."
+
+jobs:
+  include:
+
+    - stage: pack
+      script:
+        - npm run test:pack && echo 'NPM Pack Testing Passed.'
+
+    - stage: deploy
+      script:
+        - echo "Deploying to NPM ..."
+        - npm version
+        - if ./scripts/development-release.ts; then ./scripts/package-publish-config-tag-next.ts; fi
+        - npm run dist
+
+      deploy:
+        provider: npm
+        email: zixia@zixia.net
+        api_key: "$NPM_TOKEN"
+        skip_cleanup: true
+        on:
+          all_branches: true
+
 notifications:
   email:
     on_success: change
     on_failure: change
-
-before_deploy:
-  - npm version
-  - npm run dist
-
-deploy:
-  provider: npm
-  email: zixia@zixia.net
-  api_key: "$NPM_TOKEN"
-  skip_cleanup: true
-

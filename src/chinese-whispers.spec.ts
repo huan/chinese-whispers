@@ -1,6 +1,9 @@
 #!/usr/bin/env ts-node
 
-const t     = require('tap')  // tslint:disable:no-shadowed-variable
+// tslint:disable:no-var-requires
+// tslint:disable:no-shadowed-variable
+
+const t     = require('tap')
 
 const jsnx  = require('jsnetworkx')
 
@@ -70,29 +73,40 @@ t.test('Cluster', async (t: any) => {
     const clusterIndicesList = cw.cluster(NUMBER_LIST)
     // console.log(clusterIndicesList.map(cluster => cluster.map(node => NUMBER_LIST[node])))
 
-    t.equal(clusterIndicesList.length, Object.keys(EXPECTED_NO_THRESHOLD_CLUSTER).length, 'should get expect number of clusters')
-    for (const i in EXPECTED_NO_THRESHOLD_CLUSTER) {
-      t.deepEqual(clusterIndicesList[parseInt(i)].map(idx => NUMBER_LIST[idx]),
-                  (EXPECTED_NO_THRESHOLD_CLUSTER as any)[i],
-                  'should get expected items for cluster ' + i,
-                )
+    t.equal(
+      clusterIndicesList.length,
+      Object.keys(EXPECTED_NO_THRESHOLD_CLUSTER).length,
+      'should get expect number of clusters',
+    )
+
+    for (const i of Object.keys(EXPECTED_NO_THRESHOLD_CLUSTER)) {
+      t.deepEqual(
+        clusterIndicesList[parseInt(i, 10)].map(idx => NUMBER_LIST[idx]),
+        (EXPECTED_NO_THRESHOLD_CLUSTER as any)[i],
+        'should get expected items for cluster ' + i,
+      )
     }
   })
 
   t.test('threshold 1/6', async (t: any) => {
     const cw = new ChineseWhispers({
-      weightFunc,
       threshold: 1 / 6,
+      weightFunc,
     })
 
     const clusterIndicesList = cw.cluster(NUMBER_LIST)
 
-    t.equal(clusterIndicesList.length, Object.keys(EXPECTED_THRESHOLD_1_6_CLUSTER).length, 'should get expect number of clusters')
-    for (const i in EXPECTED_THRESHOLD_1_6_CLUSTER) {
-      t.deepEqual(clusterIndicesList[parseInt(i)].map(idx => NUMBER_LIST[idx]),
-                  (EXPECTED_THRESHOLD_1_6_CLUSTER as any)[i],
-                  'should get expected items for cluster ' + i,
-                )
+    t.equal(
+      clusterIndicesList.length, Object.keys(EXPECTED_THRESHOLD_1_6_CLUSTER).length,
+      'should get expect number of clusters',
+    )
+
+    for (const i of Object.keys(EXPECTED_THRESHOLD_1_6_CLUSTER)) {
+      t.deepEqual(
+        clusterIndicesList[parseInt(i, 10)].map(idx => NUMBER_LIST[idx]),
+        (EXPECTED_THRESHOLD_1_6_CLUSTER as any)[i],
+        'should get expected items for cluster ' + i,
+      )
     }
   })
 })
@@ -160,7 +174,7 @@ t.test('buildClusterList()', async (t: any) => {
   t.deepEqual(clusterList[1], [2, 4], 'should get cluster for b')
 })
 
-function weightFunc(a: number, b: number): number {
+function weightFunc (a: number, b: number): number {
   const dist = Math.abs(a - b)
   return 1 / dist
 }

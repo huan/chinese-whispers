@@ -1,6 +1,6 @@
-const { ChineseWhispers } = require('chinese-whispers')
+import { ChineseWhispers } from 'chinese-whispers'
 
-function weightFunc(a, b) {
+function weightFunc(a: number, b: number) {
   const dist = Math.abs(a - b)
   // console.log('a: ', a, ' b: ', b, ' dist: ', dist)
   return 1 / dist

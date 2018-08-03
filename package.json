@@ -12,10 +12,10 @@
     "demo": "npm run example:demo",
     "example:demo": "ts-node examples/demo",
     "lint": "npm run lint:ts",
-    "lint:ts": "tslint --version && tslint --project tsconfig.json --type-check --exclude \"dist/\" \"{bin,examples,src,tests}/**/*.ts\" && npm run clean && tsc --noEmit",
+    "lint:ts": "tslint --project tsconfig.json && npm run clean && tsc --noEmit",
     "rollup": "rollup -c",
     "test": "tap \"src/**/*.spec.ts\" \"test/**/*.spec.ts\"",
-    "test:npm": "npm run dist && export TMPDIR=/tmp/chinese-whispers-npm.$$ && mkdir $TMPDIR && npm pack && mv chinese-whispers-*.*.*.tgz $TMPDIR && cp tests/fixtures/smoke-testing.js $TMPDIR && cd $TMPDIR && npm init -y && npm install chinese-whispers-*.*.*.tgz && node smoke-testing.js",
+    "test:pack": "bash -x scripts/npm-pack-testing.sh",
     "test:unit": "tap -R tap test/unit/**/*.spec.ts"
   },
   "repository": {
@@ -43,13 +43,16 @@
   "devDependencies": {
     "@types/node": "^8.0.25",
     "@types/numjs": "^0.14.2",
+    "@types/semver": "^5.5.0",
     "rollup": "^0.49.2",
+    "semver": "^5.5.0",
     "shx": "^0.2.2",
     "tap": "^10.7.2",
-    "ts-node": "^3.3.0",
+    "ts-node": "^7.0.0",
     "tslint": "^5.7.0",
+    "tslint-config-standard": "^7.1.0",
     "tslint-jsdoc-rules": "^0.1.2",
-    "typescript": "^2.4.2"
+    "typescript": "^3.1.0-dev.20180802"
   },
   "files": [
     "package.json",

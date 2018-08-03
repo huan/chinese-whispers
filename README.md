@@ -1,5 +1,4 @@
-CHINESE-WHISPERS
-----------------
+# CHINESE-WHISPERS
 
 [![Build Status](https://travis-ci.org/zixia/chinese-whispers.svg?branch=master)](https://travis-ci.org/zixia/chinese-whispers) [![NPM Version](https://badge.fury.io/js/chinese-whispers.svg)](https://badge.fury.io/js/chinese-whispers) [![Downloads](http://img.shields.io/npm/dm/chinese-whispers.svg?style=flat-square)](https://npmjs.org/package/chinese-whispers) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
 
@@ -8,25 +7,22 @@ An Efficient Graph Clustering Algorithm for JavaScript/Node.js
 ![Chinese Whispers](https://zixia.github.io/chinese-whispers/images/chinese-whispers.gif)
 > Picture credit: http://www.wikihow.com/Play-Chinese-Whispers
 
-ALGORITHM
----------
+## ALGORITHM
 
 Chinese Whispers - _an Efficient Graph Clustering Algorithm and its Application to Natural Language Processing Problems_
 > Author: Chris Biemann, University of Leipzig, NLP-Dept. Leipzig, Germany
 
 1. [Wikipedia](https://en.wikipedia.org/wiki/Chinese_Whispers_(clustering_method))
-1. [Slide](https://www.lt.informatik.tu-darmstadt.de/fileadmin/user_upload/Group_LangTech/publications/pre-langtech/BiemannTextgraphs06.ppt) - 2006 TextGraphs 06, NYC, USA
-1. [Paper](https://pdfs.semanticscholar.org/3e71/0251cb01ba6e1c0c735591776a212edc461f.pdf)
+2. [Slide](https://www.lt.informatik.tu-darmstadt.de/fileadmin/user_upload/Group_LangTech/publications/pre-langtech/BiemannTextgraphs06.ppt) - 2006 TextGraphs 06, NYC, USA
+3. [Paper](https://pdfs.semanticscholar.org/3e71/0251cb01ba6e1c0c735591776a212edc461f.pdf)
 
-INSTALL
--------
+## INSTALL
 
 ```shell
 npm install chinese-whispers
 ```
 
-EXAMPLE
--------
+## EXAMPLE
 
 Talk is cheap, show me the code!
 
@@ -110,15 +106,14 @@ const clusterIndicesList = cw.cluster(dataList)
 
 for (const i in clusterIndicesList) {
   // get the cluster, which stores the array index dataList
-  const clusterIndices = clusterIndicesList[i]          
+  const clusterIndices = clusterIndicesList[i]
   // map the array index of dataList to the actual dataList data
-  const cluster = clusterIndices.map(j => dataList[j]) 
+  const cluster = clusterIndices.map(j => dataList[j])
   console.log('Cluster[' + i + ']: ' + cluster)
 }
 ```
 
-INSPIRATION
------------
+## INSPIRATION
 
 The code is heavily inspired by the following implementation:
 
@@ -128,32 +123,30 @@ The code is heavily inspired by the following implementation:
 * [Implementation of the Chinese Whispers graph clustering algorithm in Java](https://github.com/uhh-lt/chinese-whispers)
 * [Chinese Whispers Graph Clustering Algorithm in Javascript](https://github.com/anvaka/ngraph.cw)
 
-SEE ALSO
----------
+## SEE ALSO
 
 * [The meaning and origin of the expression: Chinese whispers](http://www.phrases.org.uk/meanings/chinese-whispers.html)
 * [TensorFlow backed FaceNet implementation for Node.js](https://github.com/zixia/node-facenet) - Face verification, face recognition and face clustering.
 
-CHANGELOG
----------
+## CHANGELOG
 
-## v0.1 / Master
+### v0.1 / Master
 
 1. `ChineseWhispers` class
 1. `cluster()` class method
 1. Unit test cases
 1. Travis CI & CD(publish to NPM automatically)
 
-AUTHOR
-------
+## AUTHOR
+
 Huan LI \<zixia@zixia.net\> (http://linkedin.com/in/zixia)
 
 <a href="http://stackoverflow.com/users/1123955/zixia">
   <img src="http://stackoverflow.com/users/flair/1123955.png" width="208" height="58" alt="profile for zixia at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for zixia at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
 </a>
 
-COPYRIGHT & LICENSE
--------------------
+## COPYRIGHT & LICENSE
+
 * Code & Docs © 2017 Huan LI \<zixia@zixia.net\>
 * Code released under the Apache-2.0 License
 * Docs released under Creative Commons
