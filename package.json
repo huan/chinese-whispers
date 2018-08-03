@@ -13,6 +13,7 @@
     "example:demo": "ts-node examples/demo",
     "lint": "npm run lint:ts",
     "lint:ts": "tslint --project tsconfig.json && npm run clean && tsc --noEmit",
+    "pack": "npm pack",
     "rollup": "rollup -c",
     "test": "tap \"src/**/*.spec.ts\" \"test/**/*.spec.ts\"",
     "test:pack": "bash -x scripts/npm-pack-testing.sh",
