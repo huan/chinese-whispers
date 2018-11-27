@@ -4,7 +4,7 @@
 
 An Efficient Graph Clustering Algorithm for JavaScript/Node.js
 
-![Chinese Whispers](https://zixia.github.io/chinese-whispers/images/chinese-whispers.gif)
+![Chinese Whispers](https://huan.github.io/chinese-whispers/images/chinese-whispers.gif)
 > Picture credit: http://www.wikihow.com/Play-Chinese-Whispers
 
 ## ALGORITHM
@@ -56,7 +56,7 @@ for (const i in clusterIndicesList) {
 // Cluster[2]: 20,21,22
 ```
 
-Source code can be found at: <https://github.com/zixia/chinese-whispers/blob/master/examples/demo.ts>
+Source code can be found at: <https://github.com/huan/chinese-whispers/blob/master/examples/demo.ts>
 
 API
 ---
@@ -126,7 +126,7 @@ The code is heavily inspired by the following implementation:
 ## SEE ALSO
 
 * [The meaning and origin of the expression: Chinese whispers](http://www.phrases.org.uk/meanings/chinese-whispers.html)
-* [TensorFlow backed FaceNet implementation for Node.js](https://github.com/zixia/node-facenet) - Face verification, face recognition and face clustering.
+* [TensorFlow backed FaceNet implementation for Node.js](https://github.com/huan/node-facenet) - Face verification, face recognition and face clustering.
 
 ## CHANGELOG
 

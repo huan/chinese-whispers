@@ -1,7 +1,7 @@
 /**
  * Chinese Whispers Algorithm for Node.js
  *
- * https://github.com/zixia/chinese-whispers
+ * https://github.com/huan/chinese-whispers
  * License: Apache-2.0
  * Author: Huan LI <zixia@zixia.net>
  *
