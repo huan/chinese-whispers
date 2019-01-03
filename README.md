@@ -130,10 +130,13 @@ The code is heavily inspired by the following implementation:
 
 ## CHANGELOG
 
-### v0.2 master
+### v0.3 master
+
+### v0.2 Aug 2018
 
 1. Upgrade TypeScript to 3.0
 2. DevOps to npm@next
+3. Upgrade rollup to 1.0
 
 ### v0.1 Sep 2017
 
