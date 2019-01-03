@@ -1,6 +1,11 @@
 # CHINESE-WHISPERS
 
-[![Build Status](https://travis-ci.com/huan/chinese-whispers.svg?branch=master)](https://travis-ci.com/huan/chinese-whispers) [![NPM Version](https://badge.fury.io/js/chinese-whispers.svg)](https://badge.fury.io/js/chinese-whispers) [![Downloads](http://img.shields.io/npm/dm/chinese-whispers.svg?style=flat-square)](https://npmjs.org/package/chinese-whispers) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/) [![Greenkeeper badge](https://badges.greenkeeper.io/huan/chinese-whispers.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/huan/chinese-whispers.svg?branch=master)](https://travis-ci.com/huan/chinese-whispers)
+[![NPM Version](https://badge.fury.io/js/chinese-whispers.svg)](https://badge.fury.io/js/chinese-whispers)
+[![npm (tag)](https://img.shields.io/npm/v/chinese-whispers/next.svg)](https://www.npmjs.com/package/chinese-whispers?activeTab=versions)
+[![Downloads](http://img.shields.io/npm/dm/chinese-whispers.svg?style=flat-square)](https://npmjs.org/package/chinese-whispers)
+[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/huan/chinese-whispers.svg)](https://greenkeeper.io/)
 
 An Efficient Graph Clustering Algorithm for JavaScript/Node.js
 
