@@ -42,7 +42,7 @@
     "numjs": "^0.16.0"
   },
   "devDependencies": {
-    "@types/node": "^10.7.0",
+    "@types/node": "^11.9.0",
     "@types/numjs": "^0.14.2",
     "@types/semver": "^5.5.0",
     "git-scripts": "^0.2.1",
