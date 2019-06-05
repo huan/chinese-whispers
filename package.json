@@ -5,7 +5,7 @@
   "main": "bundles/chinese-whispers.umd.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc --module es6",
+    "build": "tsc",
     "clean": "shx rm -fr dist/*",
     "dist": "npm run clean && npm run build && npm run rollup && npm run dist:es6to5",
     "dist:es6to5": "tsc --out ./bundles/chinese-whispers.umd.js --target es5 --allowJs bundles/chinese-whispers.es6.umd.js --lib es6,dom",
@@ -50,7 +50,7 @@
     "semver": "^6.0.0",
     "shx": "^0.3.2",
     "tap": "^13.0.0",
-    "ts-node": "^7.0.0",
+    "ts-node": "^8.2.0",
     "tslint": "^5.7.0",
     "tslint-config-standard": "^8.0.1",
     "tslint-jsdoc-rules": "^0.2.0",
