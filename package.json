@@ -5,7 +5,7 @@
   "main": "bundles/chinese-whispers.umd.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --module es6 --skipLibCheck",
     "clean": "shx rm -fr dist/*",
     "dist": "npm run clean && npm run build && npm run rollup && npm run dist:es6to5",
     "dist:es6to5": "tsc --out ./bundles/chinese-whispers.umd.js --target es5 --allowJs bundles/chinese-whispers.es6.umd.js --lib es6,dom",
