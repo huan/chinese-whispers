@@ -15,7 +15,7 @@
     "lint:ts": "tslint --project tsconfig.json && npm run clean && tsc --noEmit",
     "pack": "npm pack",
     "rollup": "rollup -c",
-    "test": "tap \"src/**/*.spec.ts\" \"test/**/*.spec.ts\"",
+    "test": "tap \"src/**/*.spec.ts\" \"tests/**/*.spec.ts\"",
     "test:pack": "bash -x scripts/npm-pack-testing.sh",
     "test:unit": "tap -R tap test/unit/**/*.spec.ts"
   },
