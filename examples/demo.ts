@@ -22,7 +22,7 @@ const clusterIndicesList = cw.cluster(dataList)
 for (let i = 0; i < clusterIndicesList.length; i++) {
   const clusterIndices = clusterIndicesList[i]
   const cluster = clusterIndices.map(j => dataList[j])
-  console.log('Cluster[' + i + ']: ' + cluster)
+  console.info('Cluster[' + i + ']: ' + cluster)
 }
 // Cluster[0]: 0,1,2
 // Cluster[1]: 10,11,12

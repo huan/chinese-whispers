@@ -11,13 +11,14 @@
     "dist:es6to5": "tsc --out ./bundles/chinese-whispers.umd.js --target es5 --allowJs bundles/chinese-whispers.es6.umd.js --lib es6,dom",
     "demo": "npm run example:demo",
     "example:demo": "ts-node examples/demo",
-    "lint": "npm run lint:ts",
-    "lint:ts": "tslint --project tsconfig.json && npm run clean && tsc --noEmit",
+    "lint": "npm run lint:es && npm run lint:ts",
+    "lint:ts": "tsc --noEmit",
     "pack": "npm pack",
     "rollup": "rollup -c",
-    "test": "tap \"src/**/*.spec.ts\" \"tests/**/*.spec.ts\"",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "tap \"src/**/*.spec.ts\" \"tests/**/*.spec.ts\"",
     "test:pack": "bash -x scripts/npm-pack-testing.sh",
-    "test:unit": "tap -R tap test/unit/**/*.spec.ts"
+    "lint:es": "eslint --ignore-pattern fixtures/ 'src/**/*.ts' 'tests/**/*.ts' 'examples/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -42,24 +43,16 @@
     "numjs": "^0.16.0"
   },
   "devDependencies": {
-    "@types/node": "^12.0.4",
+    "@chatie/eslint-config": "^0.6.18",
+    "@chatie/git-scripts": "^0.2.5",
+    "@chatie/semver": "^0.4.7",
+    "@chatie/tsconfig": "^0.6.1",
     "@types/numjs": "^0.14.2",
-    "@types/semver": "^6.0.0",
-    "git-scripts": "^0.2.1",
+    "pkg-jq": "^0.2.4",
     "rollup": "^1.16.0",
-    "semver": "^6.0.0",
     "shx": "^0.3.2",
     "tap": "^14.2.2",
-    "ts-node": "^8.2.0",
-    "tslint": "^5.7.0",
-    "tslint-config-standard": "^8.0.1",
-    "tslint-jsdoc-rules": "^0.2.0",
-    "typescript": "^3.1.0-dev.20180802"
-  },
-  "git": {
-    "scripts": {
-      "pre-push": "./scripts/pre-push.sh"
-    }
+    "tstest": "^0.4.2"
   },
   "files": [
     "package.json",
@@ -69,5 +62,13 @@
     "bundles/",
     "src/",
     "dist/"
-  ]
+  ],
+  "git": {
+    "scripts": {
+      "pre-push": "npx git-scripts-pre-push"
+    }
+  },
+  "publishConfig": {
+    "tag": "next"
+  }
 }

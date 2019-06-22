@@ -1,13 +1,10 @@
 #!/usr/bin/env ts-node
 
-// tslint:disable:no-var-requires
-// tslint:disable:no-shadowed-variable
+import { ChineseWhispers }  from './chinese-whispers'
 
 const t     = require('tap')
 
 const jsnx  = require('jsnetworkx')
-
-import { ChineseWhispers }  from './chinese-whispers'
 
 // t.only('test', async (t: any) => {
 //   const NUMBER_LIST = [

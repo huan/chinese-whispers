@@ -14,7 +14,7 @@
  */
 import { EventEmitter }   from 'events'
 
-// tslint:disable:no-var-requires
+export { VERSION } from './version'
 
 const jsnx              = require('jsnetworkx')
 const { knuthShuffle }  = require('knuth-shuffle')
@@ -44,6 +44,7 @@ export type CWEventName = 'edge'
                         | 'change'
 
 export class ChineseWhispers<T> extends EventEmitter {
+
   private weightFunc: WeightFunc<T>
   private epochs:     number
   private threshold?: number
