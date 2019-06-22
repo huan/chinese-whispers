@@ -1,11 +1,11 @@
 export default {
-  input: 'dist/index.js',
+  input: 'dist/src/index.js',
   output: {
     file: 'bundles/chinese-whispers.es6.umd.js',
     format: 'umd',
     name: 'window',
     sourcemap: true,
     banner: '/* chinese-whisper version ' + require('./package.json').version + ' */',
-    footer: '/* https://git.io/zixia/ */'
+    footer: '/* https://git.io/zixia/ */',
   },
 }
