@@ -1,6 +1,6 @@
 {
   "name": "chinese-whispers",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Chinese Whispers Algorithm",
   "main": "bundles/chinese-whispers.umd.js",
   "types": "dist/src/index.d.ts",
