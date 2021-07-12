@@ -47,7 +47,7 @@
     "@chatie/git-scripts": "^0.6.2",
     "@chatie/semver": "^0.4.7",
     "@chatie/tsconfig": "^0.10.1",
-    "@types/numjs": "^0.14.2",
+    "@types/numjs": "^0.16.1",
     "pkg-jq": "^0.2.4",
     "rollup": "^2.0.0",
     "shx": "^0.3.2",
