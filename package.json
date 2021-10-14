@@ -18,7 +18,9 @@
     "test": "npm run lint && npm run test:unit",
     "test:unit": "tap \"src/**/*.spec.ts\" \"tests/**/*.spec.ts\"",
     "test:pack": "bash -x scripts/npm-pack-testing.sh",
-    "lint:es": "eslint --ignore-pattern fixtures/ 'src/**/*.ts' 'tests/**/*.ts' 'examples/**/*.ts'"
+    "lint:es": "eslint --ignore-pattern fixtures/ 'src/**/*.ts' 'tests/**/*.ts' 'examples/**/*.ts'",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -40,7 +42,8 @@
   "dependencies": {
     "jsnetworkx": "^0.3.4",
     "knuth-shuffle": "^1.0.1",
-    "numjs": "^0.16.0"
+    "numjs": "^0.16.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.12.1",
@@ -70,5 +73,6 @@
   },
   "publishConfig": {
     "tag": "next"
-  }
+  },
+  "snyk": true
 }
